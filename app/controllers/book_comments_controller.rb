@@ -7,9 +7,10 @@ class BookCommentsController < ApplicationController
     if comment.save
      redirect_to book_path(book)
     else
-     @book = Book.find(params[:id])
+     @book = Book.find(params[:book_id])
      @books = Book.new
      @user = @book.user
+     @book_comment = BookComment.new
      render "books/show"
     end
  end
