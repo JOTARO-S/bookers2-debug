@@ -8,6 +8,7 @@
       <%= render 'form', {book: @book, btn: "Create Book"}%>
     </div>
     <div class='col-md-8 offset-md-1'>
+      <%= render 'layouts/serach' %>
       <h2>Books</h2>
       <%= render 'index', books: @books %>
     </div>
