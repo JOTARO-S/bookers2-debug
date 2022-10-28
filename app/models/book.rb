@@ -22,4 +22,10 @@ class Book < ApplicationRecord
       @book = Book.all
     end
   end
+  
+  scope :created_today, -> { where(created_at: Time.current.all_day) }
+  scope :created_yesterday, -> { where(created_at: Time.zone.yesterday.all_day) }
+  scope :created_thisweek, -> { where(created_at: Time.current.all_week) }
+  scope :created_lastweek, -> { where(created_at: Time.current.last_week.all_week) }
+  
 end
