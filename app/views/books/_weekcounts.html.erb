@@ -1,3 +1,4 @@
+<h4 class="mt-4">7日間分の投稿数</h4>
 <table class="table">
    <thead>
     <tr>
@@ -23,41 +24,44 @@
    </tbody>
   </table>
   
-<canvas id="myChart"></canvas>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.bundle.js"></script>
+<canvas id="myChart" class="mt-2"></canvas>
 <script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-          labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
-          datasets: [
-              {
-                  label: '投稿した本の数',
-                  data: [<%= books.created_6days.count %>,<%= books.created_5days.count %>,<%= books.created_4days.count %>,
-                          <%= books.created_3days.count %>,<%= books.created_2days.count %>,<%= yesterday.count %>,<%= today.count %>],
-                  borderColor: "rgba(0,255,0,1)",
-                  backgroundColor: "rgba(0,0,0,0)"
-              }
-            ],
-          },
-      options: {
-        title: {
-            display: true,
-            text: '7日間の投稿数の比較'
-        },
-        scales: {
-            yAxes: [{
-                ticks: {
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+              datasets: [
+                  {
+                      label: '投稿した本の数',
+                      data: [
+                          <%= books.created_6days.count %>,
+                          <%= books.created_5days.count %>,
+                          <%= books.created_4days.count %>,
+                          <%= books.created_3days.count %>,
+                          <%= books.created_2days.count %>,
+                          <%= yesterday.count %>,
+                          <%= today.count %>
+                        ],
+                  borderColor: "rgba(0,0,255,1)",
+                  backgroundColor: "rgba(0,0,0,0)",
+                  lineTension: 0.3
+                  }
+                ],
+              },
+          options: {
+            title: {
+                display: true,
+                text: '7日間の投稿数の比較'
+            },
+            responsive: true,
+            scales: {
+                y: {
                     suggestedMax: 10,
                     suggestedMin: 0,
-                    stepSize: 1,
-                    callback: function(value, index, values){
-                        return value + '冊'
-                    }
+                    stepSize: 1
+                    },
                 }
-            }]
-        },
-      }
+            }
     });
-    </script>
+</script>
