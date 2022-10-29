@@ -17,6 +17,7 @@ devise_for :users
     resource :relationships, only: [:create,:destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    get 'search' => 'users#search'
   end
   
 end
