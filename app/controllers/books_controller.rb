@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
    before_action :is_matching_login_user, only: [:edit, :update, :destroy]
-
+   before_action :book_detail, only: [:show]
+   
   def show
     @book = Book.find(params[:id])
     @books = Book.new
@@ -16,6 +17,9 @@ class BooksController < ApplicationController
         x.favorited_users.includes(:favorites).where(created_at: from...to).size
     }.reverse
     @book = Book.new
+    unless ViewCount.find_by(user_id: current_user.id, book_id: @books.id)
+      current_user.view_counts.create(book_id: @books.id)
+    end
   end
 
   def create
@@ -58,6 +62,13 @@ class BooksController < ApplicationController
     user_id = Book.find(params[:id]).user_id
     if(user_id != current_user.id)
       redirect_to books_path
+    end
+  end
+  
+  def book_detail
+    @book_detail = Book.find(params[:id])
+    unless ViewCount.find_by(user_id: current_user.id, book_id: @book_detail.id)
+      current_user.view_counts.create(book_id: @book_detail.id)
     end
   end
   
