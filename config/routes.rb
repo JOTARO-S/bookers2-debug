@@ -9,8 +9,7 @@ devise_for :users
   get "home/about"=>"homes#about"
   get "search" => "searches#search"
   
-  get "chat/:id", to: "chats#show", as: "chat"
-  resources :chats, only: [:create]
+  resources :chats, only: [:show, :create]
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
     resource :favorites, only: [:create,:destroy]

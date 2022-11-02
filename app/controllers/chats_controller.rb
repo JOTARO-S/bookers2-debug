@@ -1,4 +1,5 @@
 class ChatsController < ApplicationController
+  before_action :reject_non_related, only: [:show]
   
  def show
   @user = User.find(params[:id])
@@ -8,8 +9,8 @@ class ChatsController < ApplicationController
   if user_rooms.nil?
    @room = Room.new
    @room.save
-   UserRoom.create(user_id: @user.id, room_id: @room.id)
    UserRoom.create(user_id: current_user.id, room_id: @room.id)
+   UserRoom.create(user_id: @user.id, room_id: @room.id)
   else
    @room = user_rooms.room
   end
@@ -27,6 +28,13 @@ class ChatsController < ApplicationController
 
  def chat_params
   params.require(:chat).permit(:message, :room_id)
+ end
+ 
+ def reject_non_related
+  user = User.find(params[:id])
+  unless current_user.following?(user) && user.following?(current_user)
+    redirect_to books_path
+  end
  end
   
 end
