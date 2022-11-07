@@ -14,11 +14,11 @@
       <%= f.hidden_field :star, id: :review_star, class: "form-control book_star" %>
     </div>
     
-    <div id="post_raty" class="mb-3"></div>
+    <div id="post_raty_new" class="mb-3"></div>
     <script>
       $(document).on('turbolinks:load', function() {
-        $("#post_raty").empty();
-        let elem = document.querySelector('#post_raty');
+        $("#post_raty_new").empty();
+        let elem = document.querySelector('#post_raty_new');
         let opt = {
           size : 30,
           starOff: "<%= asset_path("star-off.png") %>",
