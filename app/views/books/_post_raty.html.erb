@@ -1,0 +1,16 @@
+<div id="post_raty_<%= book.id %>"></div>
+    <script>
+        $(document).on('turbolinks:load', function() {
+            $("#post_raty").empty();
+            let elem_<%= book.id %> = document.querySelector('#post_raty_<%= book.id %>');
+            post_raty_<%= book.id %>.innerHTML = ""
+            let opt_<%= book.id %> = {  
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                half: false,,
+                score: "<%= book.star %>",
+                readOnly: true,
+              };
+        raty(elem_<%= book.id %> ,opt_<%= book.id %>);
+        });
+</script>

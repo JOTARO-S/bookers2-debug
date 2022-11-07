@@ -13,11 +13,11 @@
    </thead>
    <tbody>
     <tr>
-     <th><%= books.created_6days.count %></th>
-     <th><%= books.created_5days.count %></th>
-     <th><%= books.created_4days.count %></th>
-     <th><%= books.created_3days.count %></th>
-     <th><%= books.created_2days.count %></th>
+     <th><%= book.created_6days.count %></th>
+     <th><%= book.created_5days.count %></th>
+     <th><%= book.created_4days.count %></th>
+     <th><%= book.created_3days.count %></th>
+     <th><%= book.created_2days.count %></th>
      <th><%= yesterday.count %></th>
      <th><%= today.count %></th>
     </tr>
@@ -35,11 +35,11 @@
                   {
                       label: '投稿した本の数',
                       data: [
-                          <%= books.created_6days.count %>,
-                          <%= books.created_5days.count %>,
-                          <%= books.created_4days.count %>,
-                          <%= books.created_3days.count %>,
-                          <%= books.created_2days.count %>,
+                          <%= book.created_6days.count %>,
+                          <%= book.created_5days.count %>,
+                          <%= book.created_4days.count %>,
+                          <%= book.created_3days.count %>,
+                          <%= book.created_2days.count %>,
                           <%= yesterday.count %>,
                           <%= today.count %>
                         ],

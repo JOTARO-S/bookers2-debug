@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <% books.each do |book| %>
+    <% book.each do |book| %>
       <tr>
         <td><%= link_to(book.user) do %>
           <%= image_tag book.user.get_profile_image, size:'50x50' %>
@@ -21,15 +21,7 @@
         </td>
         <td><%= link_to "コメント数: #{book.book_comments.count}",book_path(book.id) %></td>
         <td>
-          <div class="post_raty_<%= book.id %>"></div>
-          <script>
-            $('.post_raty_<%= book.id %>').raty({
-              readOnly: true,
-              starOff: "<%= asset_path("star-off.png") %>",
-              starOn : "<%= asset_path("star-on.png") %>",
-              score: <%= book.star %>,
-            });
-          </script>
+          
         </td>
         <td><p class="view-count">閲覧数: <%= book.view_counts.count %></p></td>
       </tr>

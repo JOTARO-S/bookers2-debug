@@ -4,17 +4,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @books = @user.books
-    @book = Book.new
-    @today = @books.created_today
-    @yesterday = @books.created_yesterday
-    @thisweek = @books.created_thisweek
-    @lastweek = @books.created_lastweek
+    @book = @user.books
+    @books = Book.new
+    @today = @book.created_today
+    @yesterday = @book.created_yesterday
+    @thisweek = @book.created_thisweek
+    @lastweek = @book.created_lastweek
   end
 
   def index
     @users = User.all
-    @book = Book.new
+    @books = Book.new
   end
 
   def edit
@@ -32,13 +32,13 @@ class UsersController < ApplicationController
   
   def search
     @user = User.find(params[:user_id])
-    @books = @user.books 
-    @book = Book.new
+    @book = @user.books 
+    @books = Book.new
     if params[:created_at] == ""
       @search_book = "日付を選択してください"
     else
       create_at = params[:created_at]
-      @search_book = @books.where(['created_at LIKE ? ', "#{create_at}%"]).count
+      @search_book = @book.where(['created_at LIKE ? ', "#{create_at}%"]).count
     end
   end
   

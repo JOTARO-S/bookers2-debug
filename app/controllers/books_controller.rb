@@ -12,20 +12,20 @@ class BooksController < ApplicationController
   def index
     to = Time.current.at_end_of_day
     from = (to - 6.day).at_beginning_of_day
-    @books = Book.includes(:favorited_users).
+    @book = Book.includes(:favorited_users).
       sort_by {|x| 
         x.favorited_users.includes(:favorites).where(created_at: from...to).size
     }.reverse
-    @book = Book.new
+    @books = Book.new
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    if @book.save
-      redirect_to book_path(@book), notice: "You have created book successfully."
+    @books = Book.new(book_params)
+    @books.user_id = current_user.id
+    if @books.save
+      redirect_to book_path(@books), notice: "You have created book successfully."
     else
-      @books = Book.all
+      @book = Book.all
       render 'index'
     end
   end
