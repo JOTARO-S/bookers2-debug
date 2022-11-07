@@ -22,20 +22,15 @@
           </td>
           <td><%= "コメント数: #{@book.book_comments.count}" %></td>
           <td>
-            <div id="post_raty_<%= @book.id %>"></div>
-            <script>
-              $('#post_raty_<%= @book.id %>').empty();
-              let elem = document.querySelector('#post_raty_<%= @book.id %>');
-              let opt = {
-                size : 30,
-                starOff: "<%= asset_path("star-off.png") %>",
-                starOn : "<%= asset_path("star-on.png") %>",
-                score: <%= @book.star %>,
-                half: false,
-                readOnly: true,
-               };
-              raty(elem,opt);
-            </script>
+            <div class="post_raty_<%= @book.id %>"></div>
+              <script>
+                $('.post_raty_<%= @book.id %>').raty({
+                  readOnly: true,
+                  starOff: "<%= asset_path("star-off.png") %>",
+                  starOn : "<%= asset_path("star-on.png") %>",
+                  score: <%= @book.star %>,
+                });
+              </script>
           </td>
           <td><p class="view-count">閲覧数: <%= @book_detail.view_counts.count %></p></td>
           <% if @book.user == current_user %>
