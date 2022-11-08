@@ -10,8 +10,26 @@
     <div class='col-md-8 offset-md-1'>
       <%= render 'layouts/search' %>
       <h2>Books</h2>
-      <%= render 'index', { book: @book, book_detail: @book_datail } %>
       
+      <div class="wrap">
+        <ul id="tab-menu">
+          <li><a href="#tab1" class="active">Default</a></li>
+          <li><a href="#tab2" class="">新しい順</a></li>
+          <li><a href="#tab3" class="">評価の高い順</a></li>
+        </ul>
+      
+      <div id="tab-contents">
+        <div id="tab1" class="tab">
+          <%= render 'index', { book: @book, book_detail: @book_datail } %>
+        </div>
+        <div id="tab2" class="tab">
+          <%= render 'index', { book: @book, book_detail: @book_datail } %>
+        </div>
+        <div id="tab3" class="tab">
+          <%= render 'index', { book: @book, book_detail: @book_datail } %>
+        </div>
+      </div>
     </div>
+  </div>
   </div>
 </div>
