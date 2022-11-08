@@ -16,6 +16,8 @@ class BooksController < ApplicationController
       sort_by {|x| 
         x.favorited_users.includes(:favorites).where(created_at: from...to).size
     }.reverse
+    @book_new = Book.order("created_at DESC")
+    @book_star = Book.all
     @books = Book.new
   end
 

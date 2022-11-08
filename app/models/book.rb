@@ -39,4 +39,6 @@ class Book < ApplicationRecord
   scope :created_thisweek, -> { where(created_at: Time.current.all_week) }
   scope :created_lastweek, -> { where(created_at: Time.current.last_week.all_week) }
   scope :created_1week, -> { where(created_at: 1.week.ago.beginning_of_day...Time.zone.now.end_of_day) }
+
+
 end
