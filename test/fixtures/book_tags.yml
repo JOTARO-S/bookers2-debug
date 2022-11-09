@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  book: MyString
-  tag: MyString
+  book: one
+  tag: one
 
 two:
-  book: MyString
-  tag: MyString
+  book: two
+  tag: two

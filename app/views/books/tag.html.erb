@@ -1,4 +1,6 @@
-<table class='table table-hover table-inverse'>
+  <%= render 'layouts/search' %>
+  <h2>Books search for "test"</h2>
+  <table class='table table-hover table-inverse'>
   <thead>
     <tr>
       <th></th>
@@ -9,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <% book.each do |book| %>
+    <% @book.each do |book| %>
       <tr>
         <td><%= link_to(book.user) do %>
           <%= image_tag book.user.get_profile_image, size:'50x50' %>
@@ -40,7 +42,7 @@
               };
         raty(elem_<%= book.id %> ,opt_<%= book.id %>);
         });
-</script>
+    </script>
         </td>
         <td><p class="view-count">閲覧数: <%= book.view_counts.count %></p></td>
       </tr>

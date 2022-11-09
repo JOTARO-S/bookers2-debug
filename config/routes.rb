@@ -8,6 +8,7 @@ devise_for :users
   root to: "homes#top"
   get "home/about"=>"homes#about"
   get "search" => "searches#search"
+  get "tag" => "books#tag"
   
   resources :chats, only: [:show, :create]
 

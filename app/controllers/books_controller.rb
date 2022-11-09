@@ -26,7 +26,7 @@ class BooksController < ApplicationController
     if @books.save
       redirect_to book_path(@books), notice: "You have created book successfully."
     else
-      @book = Book.all
+      @book = Book.order(params[:sort])
       render 'index'
     end
   end
@@ -48,6 +48,10 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.destroy
     redirect_to books_path
+  end
+  
+  def tag
+    @book = Book.all
   end
 
   private
