@@ -12,12 +12,11 @@ class BooksController < ApplicationController
   def index
     to = Time.current.at_end_of_day
     from = (to - 6.day).at_beginning_of_day
-    @book = Book.includes(:favorited_users).
+    @book = Book.all.order(params[:sort])
+    @booka = Book.includes(:favorited_users).
       sort_by {|x| 
         x.favorited_users.includes(:favorites).where(created_at: from...to).size
     }.reverse
-    @book_new = Book.order("created_at DESC")
-    @book_star = Book.order("star DESC")
     @books = Book.new
   end
 

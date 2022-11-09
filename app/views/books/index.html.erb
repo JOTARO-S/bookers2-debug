@@ -10,26 +10,10 @@
     <div class='col-md-8 offset-md-1'>
       <%= render 'layouts/search' %>
       <h2>Books</h2>
-      
-      <div class="wrap">
-        <div id="tab-menu">
-          <a href="#tab1" class="active">Default</a>&ensp;|&ensp;  
-          <a href="#tab2" class="">新しい順</a>&ensp;|&ensp; 
-          <a href="#tab3" class="">評価の高い順</a>
-        </div>
-      
-      <div id="tab-contents">
-        <div id="tab1" class="tab">
-          <%= render 'index', { book: @book, book_detail: @book_datail } %>
-        </div>
-        <div id="tab2" class="tab">
-          <%= render 'index', { book: @book_new, book_detail: @book_datail } %>
-        </div>
-        <div id="tab3" class="tab">
-          <%= render 'index', { book: @book_star, book_detail: @book_datail } %>
-        </div>
-      </div>
-    </div>
+      <%= link_to "Default", books_path(sort: "") %> | 
+      <%= link_to "新しい順", books_path(sort: "created_at DESC") %> | 
+      <%= link_to "評価の高い順", books_path(sort: "star DESC") %>
+      <%= render 'index', { book: @book, book_detail: @book_datail } %>
   </div>
   </div>
 </div>
