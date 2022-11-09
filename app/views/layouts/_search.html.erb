@@ -10,7 +10,7 @@
  
   <div class="search_from">
   <%= form_with url: search_tag_path, local: true, method: :get do |f| %>
-   <%= f.text_field :word %>
+   <%= f.text_field :keyword %>
    <%= f.submit "検索" %>
   <% end %>
  </div>

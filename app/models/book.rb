@@ -28,8 +28,8 @@ class Book < ApplicationRecord
     end
   end
   
-  def self.looks(search, word)
-    @book = Book.where(["tag LIKE?", "#{word}"])
+  def self.looks(search, keyword)
+    @book = Book.where(["tag LIKE?", "#{keyword}"])
   end
   
   

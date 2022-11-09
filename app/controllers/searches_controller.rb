@@ -12,8 +12,8 @@ class SearchesController < ApplicationController
     end
     
     def search_tag
-        @word = params[:word]
-        @book = Book.looks(params[:search], params[:word])
+        @word = params[:keyword]
+        @book = Book.looks(params[:search], params[:keyword])
     end
     
 end
