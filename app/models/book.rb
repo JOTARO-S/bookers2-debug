@@ -28,6 +28,10 @@ class Book < ApplicationRecord
     end
   end
   
+  def self.looks(search, word)
+    @book = Book.where(["tag LIKE?", "#{word}"])
+  end
+  
   
   
   scope :created_today, -> { where(created_at: Time.current.all_day) }

@@ -49,10 +49,6 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_path
   end
-  
-  def tag
-    @book = Book.all
-  end
 
   private
 
